@@ -1,4 +1,6 @@
 require_relative '../lib/showtimes.rb'
 
 
-Showtimes.new.welcome
+start = Showtimes.new
+start.welcome
+start.get_zipcode
