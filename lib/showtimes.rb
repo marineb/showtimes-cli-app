@@ -1,8 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
-require "showtimes/scraper.rb"
-require "showtimes/theater.rb"
+# require "showtimes/theater.rb"
 
 class Showtimes
   
@@ -14,13 +13,22 @@ class Showtimes
     puts "\n"
   end
   
-  def get_zipcode
+  def showtimes_scraper
     puts "What's your zipcode?"
-    gets.strip
+    url = gets.strip
+    full_url = "https://www.google.com/movies?near=#{url}"
+
+    theaters = []
+    
+    page = Nokogiri::HTML(open(full_url))
+    page.css(".movie_results .theater").each do |s|
+      t = {}
+      t[:name] = s.css("h2.name a").text
+      theaters << t
+    end
+    theaters
+
   end
   
-  def
-    
-  end
   
 end
