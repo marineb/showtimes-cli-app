@@ -11,10 +11,24 @@ class Showtimes::Theater
   end
   
   def self.new_from_index_page(t)
-    the_movies = []
-    t.css(".movie .name a").each {|movie_name| the_movies << movie_name.text}
-        
-    self.new(t.css("h2.name a").text, the_movies)
+    movies = []
+    
+    t.css(".showtimes .movie").each do |m|
+      movie = {}
+      m.css(".name a").map do |movie_name|
+        movie[:movie_name] = movie_name.text       
+      end
+      
+      m.css(".times").map do |movie_time|
+        times = []
+        times << movie_time.text
+        movie[:movie_times] = times 
+      end
+  
+      movies << movie
+    end
+    
+    self.new(t.css("h2.name a").text, movies)
   end
     
   def self.all

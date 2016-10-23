@@ -40,7 +40,8 @@ class Showtimes::App
   
   def display_showtimes(index)
     Showtimes::Theater.all[index-1].movies.each do |showtimes|
-      puts "#{showtimes}"
+      puts "#{showtimes[:movie_name]}"
+      puts "#{showtimes[:movie_times]}"
     end
   end
   
