@@ -12,7 +12,8 @@ class Showtimes::Theater
   
   def self.new_from_index_page(t)
     the_movies = []
-    teh_movies << t.css(".movie name a").text
+    t.css(".movie .name a").each {|movie_name| the_movies << movie_name.text}
+        
     self.new(t.css("h2.name a").text, the_movies)
   end
     

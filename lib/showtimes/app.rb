@@ -39,7 +39,9 @@ class Showtimes::App
   end
   
   def display_showtimes(index)
-    puts "#{Showtimes::Theater.all[index-1].movies}"
+    Showtimes::Theater.all[index-1].movies.each do |showtimes|
+      puts "#{showtimes}"
+    end
   end
   
   
