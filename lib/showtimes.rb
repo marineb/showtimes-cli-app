@@ -26,9 +26,17 @@ class Showtimes
       t[:name] = s.css("h2.name a").text
       theaters << t
     end
-    theaters
-
+    
+    num = 0
+    theaters.each do |t|
+      t.each do |k, v|
+        num += 1
+        puts "#{num}: #{v}"
+      end
+    end
   end
   
+  def display_theaters
+  end
   
 end
