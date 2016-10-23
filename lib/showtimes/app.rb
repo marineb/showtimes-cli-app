@@ -24,10 +24,9 @@ class Showtimes::App
   def display_theaters
     puts "\n"
     puts "These theaters are closest to #{zipcode}:"
-    num = 0
-    Showtimes::Theater.all.each do |t|
-      num += 1
-      puts "#{num}: #{t.name}"
+
+    Showtimes::Theater.all.each.with_index do |t, index|
+      puts "#{index+1}. #{t.name}"
     end
   end
   
