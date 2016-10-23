@@ -1,18 +1,20 @@
-class Theater
-  
-  #this is going to manage the list of theaters
+class Showtimes::Theater
   
   attr_accessor :name
   
   @@all_theaters = []
   
-  def initialize(name)
+  def initialize(name=nil)
     @name = name
     @@all_theaters << self
   end
   
+  def self.new_from_index_page(t)
+    self.new(t.css("h2.name a").text)
+  end
+    
   def self.all
     @@all_theaters
   end
-  
+    
 end

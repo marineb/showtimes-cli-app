@@ -1,53 +1,36 @@
 class Showtimes::App
   
+  attr_accessor :zipcode
+  
   def welcome
     puts "\n"
     puts "**********************************************"
     puts "********** Movie Showtimes Near You **********"
     puts "**********************************************"
     puts "\n"
+    start
   end
   
-  def showtimes_scraper
-    puts "What's your zipcode?"
-    zipcode = gets.strip
-    url = "https://www.google.com/movies?near=#{zipcode}"
-
-    theaters = []
+  def start
+    puts "What is your zipcode?"
+    @zipcode = gets.strip
+    #TODO: handle if user's input is invalid
     
-    page = Nokogiri::HTML(open(url))
-    page.css(".movie_results .theater").each do |s|
-      t = {}
-      t[:theater] = s.css("h2.name a").text
-      t[:movie] = s.css(".movie .name a").text # need to loop through those 
-      theaters << t
-    end
-    theaters
-    
-    # [
-    #   {
-    #     :theater => "something",
-    #     :movie => "foodcoop",
-    #   }
-    # ]
-    
+    Showtimes::Scraper.new.scrape_showtimes(zipcode)
+    display_theaters
+  end
+  
+  
+  def display_theaters
     puts "\n"
     puts "These theaters are closest to #{zipcode}:"
     num = 0
-    theaters.each do |t|
+    Showtimes::Theater.all.each do |t|
       num += 1
-      puts "#{num}: #{t[:theater]}"
-      # puts "#{num}: #{t[:movie]}"    
+      puts "#{num}: #{t.name}"
     end
-    
-    puts "\n"
-    puts "Enter a theater number to see its movies and showtimes:"
-    theater_selection = gets.strip
-    
-    
   end
   
-  def display_theaters
-  end
+  
   
 end
