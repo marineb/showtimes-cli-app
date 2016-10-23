@@ -15,25 +15,41 @@ class Showtimes
   
   def showtimes_scraper
     puts "What's your zipcode?"
-    url = gets.strip
-    full_url = "https://www.google.com/movies?near=#{url}"
+    zipcode = gets.strip
+    url = "https://www.google.com/movies?near=#{zipcode}"
 
     theaters = []
     
-    page = Nokogiri::HTML(open(full_url))
+    page = Nokogiri::HTML(open(url))
     page.css(".movie_results .theater").each do |s|
       t = {}
-      t[:name] = s.css("h2.name a").text
+      t[:theater] = s.css("h2.name a").text
+      t[:movie] = s.css(".movie .name a").text # need to loop through those 
       theaters << t
     end
+    theaters
     
+    # [
+    #   {
+    #     :theater => "something",
+    #     :movie => "foodcoop",
+    #   }
+    # ]
+    
+    puts "\n"
+    puts "These theaters are closest to #{zipcode}:"
     num = 0
     theaters.each do |t|
-      t.each do |k, v|
-        num += 1
-        puts "#{num}: #{v}"
-      end
+      num += 1
+      puts "#{num}: #{t[:theater]}"
+      # puts "#{num}: #{t[:movie]}"    
     end
+    
+    puts "\n"
+    puts "Enter a theater number to see its movies and showtimes:"
+    theater_selection = gets.strip
+    
+    
   end
   
   def display_theaters
