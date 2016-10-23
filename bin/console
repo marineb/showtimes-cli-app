@@ -11,4 +11,4 @@ require "showtimes"
 # Pry.start
 
 require "irb"
-IRB.welcome
+IRB.start
