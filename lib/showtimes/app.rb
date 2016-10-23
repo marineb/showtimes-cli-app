@@ -39,9 +39,22 @@ class Showtimes::App
   end
   
   def display_showtimes(index)
-    Showtimes::Theater.all[index-1].movies.each do |showtimes|
-      puts "#{showtimes[:movie_name]}"
-      puts "#{showtimes[:movie_times]}"
+    selection = Showtimes::Theater.all[index-1]
+    
+    puts "\n"
+    puts "**********************************************"
+    puts "Movies playing today at #{selection.name}:"
+    puts "**********************************************"
+    puts "\n"
+
+    selection.movies.each_with_index do |showtimes, index|
+      puts "#{index+1}. #{showtimes[:movie_name]}"
+      
+      showtimes[:movie_times].each do |time|
+        puts "   #{time}"
+      end
+
+      puts "\n"
     end
   end
   

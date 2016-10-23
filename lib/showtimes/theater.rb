@@ -20,9 +20,7 @@ class Showtimes::Theater
       end
       
       m.css(".times").map do |movie_time|
-        times = []
-        times << movie_time.text
-        movie[:movie_times] = times 
+        movie[:movie_times] = movie_time.text.split(" &nbsp")
       end
   
       movies << movie
