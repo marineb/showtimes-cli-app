@@ -15,9 +15,18 @@ class Showtimes::App
     puts "What is your zipcode?"
     @zipcode = gets.strip
     #TODO: handle if user's input is invalid
+    #TODO: offer a menu upon each prompt (go back, exit, etc)
     
     Showtimes::Scraper.new.scrape_showtimes(zipcode)
     display_theaters
+    
+    puts "\n"
+    puts "For which theater do you wish to see the showtimes? (enter the number)"
+    
+    theater_choice = gets.strip.to_i
+    
+    display_showtimes(theater_choice)
+    
   end
   
   
@@ -28,6 +37,10 @@ class Showtimes::App
     Showtimes::Theater.all.each.with_index do |t, index|
       puts "#{index+1}. #{t.name}"
     end
+  end
+  
+  def display_showtimes(index)
+    puts "#{Showtimes::Theater.all[index-1].movies}"
   end
   
   
