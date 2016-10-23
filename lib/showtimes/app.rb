@@ -24,7 +24,6 @@ class Showtimes::App
     puts "For which theater do you wish to see the showtimes? (enter the number)"
     
     theater_choice = gets.strip.to_i
-    
     display_showtimes(theater_choice)
     
   end
