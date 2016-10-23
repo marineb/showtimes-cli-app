@@ -1,7 +1,8 @@
 require_relative '../lib/showtimes.rb'
 
 
-start = Showtimes.new
-start.welcome
-start.showtimes_scraper
-# start.display_theaters
+# start = Showtimes.new
+# start.welcome
+# start.showtimes_scraper
+
+Showtimes::App.new.welcome
