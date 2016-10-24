@@ -3,5 +3,4 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
-# bundle install
-guard :rspec, cmd: 'bundle exec rspec' do
+bundle install
