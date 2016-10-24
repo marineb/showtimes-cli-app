@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "showtimes"
-  spec.version       = "0.1.5"
+  spec.version       = "0.1.6"
   spec.authors       = ["Marine Boudeau"]
   spec.email         = ["m14868@gmail.com"]
 
@@ -21,4 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "nokogiri", "~> 0"
   spec.add_development_dependency "pry", "~> 0"
+  
+  spec.add_runtime_dependency "bundler", "~> 1.13"
+  spec.add_runtime_dependency "nokogiri", "~> 0"
+  spec.add_runtime_dependency "pry", "~> 0"
 end
