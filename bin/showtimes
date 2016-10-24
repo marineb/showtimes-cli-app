@@ -1,3 +1,4 @@
 require_relative '../lib/showtimes.rb'
+#!/usr/bin/env ruby
 
 Showtimes::App.new.welcome
