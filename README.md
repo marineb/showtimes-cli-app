@@ -4,24 +4,13 @@ This is a ruby gem to lookup movie showtimes. Provide your zipcode, select a the
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'showtimes'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install showtimes
 
-<!-- ## Usage
+## Usage
+To run the application, type the following:
 
-TODO: Write usage instructions here -->
-
+    $ showtimes
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
