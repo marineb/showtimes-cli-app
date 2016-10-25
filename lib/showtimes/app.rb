@@ -43,9 +43,9 @@ class Showtimes::App
     if next_up == "1"
       start
     else
-      puts "***************************************"
-      puts "     BYEEEEEEEEEEE. See you soon! ♥    "
-      puts "***************************************"
+      puts "******************************************"
+      puts "***** BYEEEEEEEEEEE. See you soon! ♥ *****"
+      puts "******************************************"
       puts "\n"
       exit
     end
@@ -62,11 +62,12 @@ class Showtimes::App
   
   def display_showtimes(index)
     selection = Showtimes::Theater.all[index-1]
+    stars = "*" * selection.name.length
     
     puts "\n"
-    puts "**********************************************"
-    puts "Movies playing today at #{selection.name}:"
-    puts "**********************************************"
+    puts "*************************************#{stars}"
+    puts "***** Movies playing today at #{selection.name}: *****"
+    puts "*************************************#{stars}"
     puts "\n"
 
     selection.movies.each_with_index do |showtimes, index|
@@ -79,7 +80,5 @@ class Showtimes::App
       puts "\n"
     end
   end
-  
-  
   
 end
