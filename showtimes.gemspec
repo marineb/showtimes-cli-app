@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["m14868@gmail.com"]
 
   spec.summary       = "Movie Showtimes Near You"
-  spec.description   = "Enter your zipcode, and we will tell you what movies you can go see tonight."
+  spec.description   = "Enter your zipcode, and see what movies you can go see today."
   spec.homepage      = "https://github.com/marineb/showtimes-cli-app"
   spec.license       = "MIT"
 
