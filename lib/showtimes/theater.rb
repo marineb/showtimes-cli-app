@@ -32,5 +32,9 @@ class Showtimes::Theater
   def self.all
     @@all_theaters
   end
+  
+  def self.clear
+    @@all_theaters.clear
+  end
     
 end

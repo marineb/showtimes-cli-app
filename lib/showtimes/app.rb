@@ -13,6 +13,7 @@ class Showtimes::App
   
   def start
     #TODO: offer a menu upon each prompt (go back, exit, etc)
+    Showtimes::Theater.clear
 
     puts "What is your zipcode?"
     begin
@@ -29,6 +30,25 @@ class Showtimes::App
     puts "For which theater do you wish to see the showtimes? (enter the number)"
     theater_choice = gets.strip.to_i
     display_showtimes(theater_choice)
+    
+    what_next
+  end
+  
+  def what_next
+    puts "\n"
+    puts "That's it! What do you want to do next?"
+    puts "1: try another zipcode"
+    puts "2: exit"
+    next_up = gets.strip
+    if next_up == "1"
+      start
+    else
+      puts "***************************************"
+      puts "     BYEEEEEEEEEEE. See you soon! ♥    "
+      puts "***************************************"
+      puts "\n"
+      exit
+    end
   end
   
   def display_theaters
