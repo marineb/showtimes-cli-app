@@ -1,14 +1,16 @@
 # Showtimes
 
-Welcome! This ruby gem will give you movie showtimes near you, from the comfort of your terminal. 
+Welcome! This app will give you movie showtimes near you, from the comfort of your own terminal. 
 Enter your zipcode, select a theater, and BAM! You'll see what movies are playing near you. 
+
+Where is the data coming from? The app scrapes [Google movies](https://www.google.com/movies). 
 
 ## Installation
 
     $ gem install showtimes
 
 ## Usage
-To run the application, type the following:
+To run the application, type the following, and follow the instructions:
 
     $ showtimes
     
