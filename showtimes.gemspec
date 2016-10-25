@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "showtimes"
-  spec.version       = "0.1.14"
+  spec.version       = "0.2.0"
   spec.authors       = ["Marine Boudeau"]
   spec.email         = ["m14868@gmail.com"]
 
