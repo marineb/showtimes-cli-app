@@ -15,13 +15,17 @@ class Showtimes::App
     Showtimes::Theater.clear
 
     puts "What is your zipcode?"
-    begin
-      @zipcode = gets.strip
-      @zipcode = Integer(zipcode)
-    rescue
-      puts "Whoops. Looks like you entered an invalid zipcode. Try again:"
-      retry
+    @zipcode = gets.strip
+    
+    if @zipcode !~ /\d{5}/
+      system('clear') 
+      puts "*****************************************************************"
+      puts "***** Whoops. Looks like you entered an invalid zipcode. 😩  *****"
+      puts "*****************************************************************"
+      puts "\n"
+      start
     end
+      
     Showtimes::Scraper.new.scrape_showtimes(zipcode)
 
     theater_selection
