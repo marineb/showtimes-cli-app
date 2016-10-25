@@ -12,7 +12,6 @@ class Showtimes::App
   end
   
   def start
-    #TODO: offer a menu upon each prompt (go back, exit, etc)
     Showtimes::Theater.clear
 
     puts "What is your zipcode?"
