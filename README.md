@@ -1,6 +1,7 @@
 # Showtimes
 
-This is a ruby gem to lookup movie showtimes. Provide your zipcode, select a theater, and see what movies are playing, and when.
+Welcome! This ruby gem will give you movie showtimes near you, from the comfort of your terminal. 
+Enter your zipcode, select a theater, and BAM! You'll see what movies are playing near you. 
 
 ## Installation
 
