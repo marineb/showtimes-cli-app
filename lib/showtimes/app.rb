@@ -43,6 +43,7 @@ class Showtimes::App
     if next_up == "1"
       start
     else
+      puts "\n"
       puts "******************************************"
       puts "***** BYEEEEEEEEEEE. See you soon! ♥ *****"
       puts "******************************************"
