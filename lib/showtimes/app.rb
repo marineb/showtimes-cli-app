@@ -24,29 +24,27 @@ class Showtimes::App
       retry
     end
     Showtimes::Scraper.new.scrape_showtimes(zipcode)
-    display_theaters
-    
-    puts "\n"
-    puts "For which theater do you wish to see the showtimes? (enter the number)"
-    theater_choice = gets.strip.to_i
-    display_showtimes(theater_choice)
-    
-    what_next
+
+    theater_selection
   end
   
   def what_next
     puts "\n"
     puts "That's it! What do you want to do next?"
-    puts "1: try another zipcode"
-    puts "2: exit"
+    puts "1: try a new zipcode"
+    puts "2: back to theaters"
+    puts "3: exit"
     next_up = gets.strip
     if next_up == "1"
       start
+    elsif next_up == "2"
+      theater_selection
     else
+      system('clear') 
       puts "\n"
-      puts "******************************************"
-      puts "***** BYEEEEEEEEEEE. See you soon! ♥ *****"
-      puts "******************************************"
+      puts "****************************************************"
+      puts "********** BYEEEEEEEEEEE. See you soon! ♥ **********"
+      puts "****************************************************"
       puts "\n"
       exit
     end
@@ -59,6 +57,16 @@ class Showtimes::App
     Showtimes::Theater.all.each.with_index do |t, index|
       puts "#{index+1}. #{t.name}"
     end
+  end
+  
+  def theater_selection
+    display_theaters    
+    puts "\n"
+    puts "For which theater do you wish to see the showtimes? (enter the number)"
+    theater_choice = gets.strip.to_i
+    display_showtimes(theater_choice)
+    
+    what_next
   end
   
   def display_showtimes(index)
