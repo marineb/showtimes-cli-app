@@ -1,6 +1,6 @@
 class Showtimes::App
   
-  attr_accessor :zipcode
+  attr_accessor :zipcode, :theater_choice
   
   def welcome
     puts "\n"
@@ -12,22 +12,24 @@ class Showtimes::App
   end
   
   def start
-    puts "What is your zipcode?"
-    @zipcode = gets.strip
-    #TODO: handle if user's input is invalid
     #TODO: offer a menu upon each prompt (go back, exit, etc)
-    
+
+    puts "What is your zipcode?"
+    begin
+      @zipcode = gets.strip
+      @zipcode = Integer(zipcode)
+    rescue
+      puts "Whoops. Looks like you entered an invalid zipcode. Try again:"
+      retry
+    end
     Showtimes::Scraper.new.scrape_showtimes(zipcode)
     display_theaters
     
     puts "\n"
     puts "For which theater do you wish to see the showtimes? (enter the number)"
-    
     theater_choice = gets.strip.to_i
     display_showtimes(theater_choice)
-    
   end
-  
   
   def display_theaters
     puts "\n"
