@@ -8,10 +8,10 @@ class Showtimes::App
     puts "********** Movie Showtimes Near You **********"
     puts "**********************************************"
     puts "\n"
-    start
+    get_zip_code
   end
   
-  def start
+  def get_zip_code
     Showtimes::Theater.clear
 
     puts "What is your zipcode?"
@@ -23,7 +23,7 @@ class Showtimes::App
       puts "***** Whoops. Looks like you entered an invalid zipcode. 😩  *****"
       puts "*****************************************************************"
       puts "\n"
-      start
+      get_zip_code
     end
       
     Showtimes::Scraper.new.scrape_showtimes(zipcode)
@@ -39,7 +39,7 @@ class Showtimes::App
     puts "3: exit"
     next_up = gets.strip
     if next_up == "1"
-      start
+      get_zip_code
     elsif next_up == "2"
       theater_selection
     else

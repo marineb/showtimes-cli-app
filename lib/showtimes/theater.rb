@@ -4,29 +4,21 @@ class Showtimes::Theater
   
   @@all_theaters = []
   
-  def initialize(name=nil, movies=nil)
+  def initialize(name = nil, movies = nil)
     @name = name
     @movies = movies
     @@all_theaters << self
   end
   
-  def self.new_from_index_page(t)
+  def self.new_from_index_page(showtimes)
     movies = []
-    
-    t.css(".showtimes .movie").each do |m|
-      movie = {}
-      m.css(".name a").map do |movie_name|
-        movie[:movie_name] = movie_name.text       
-      end
-      
-      m.css(".times").map do |movie_time|
-        movie[:movie_times] = movie_time.text.split(" &nbsp")
-      end
-  
-      movies << movie
+    showtimes.css(".showtimes .movie").each do |movie|
+      movies << {
+        movie_name: movie.css(".name a").text,
+        movie_times: movie.css(".times").text.split(" &nbsp")
+      }
     end
-    
-    self.new(t.css("h2.name a").text, movies)
+    self.new(showtimes.css("h2.name a").text, movies)
   end
     
   def self.all
